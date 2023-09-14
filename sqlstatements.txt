@@ -32,8 +32,8 @@ question8
 SELECT * FROM orders WHERE orderdate >= '1996-10-01' and orderdate <= '1996-10-31' order by orderdate asc;
 
 question9
-SELECT count(orderid)
-FROM Orders;
+SELECT shipperid,
+count(shipperid) as total from orders GROUP BY shipperid;
 
 question10
 SELECT * FROM products WHERE price>25;

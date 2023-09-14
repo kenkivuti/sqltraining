@@ -1,0 +1,39 @@
+question1:
+INSERT INTO 
+customers(CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES('ken','kivuti','kroad 254', 'juja' , '1456', 'kenya');
+
+question2
+INSERT INTO orders(CustomerID,EmployeeID,OrderDate,ShipperID)
+VALUES(92,8,2023-10-09,2);
+
+question3
+INSERT INTO 
+products(ProductName,SupplierID,CategoryID,Unit,Price)
+values('Sasini Coffee', 2, 1, '20boxes x 30bags' , 25)
+
+question4
+INSERT INTO 
+orderdetails(OrderID,ProductID,Quantity)
+values(10444,78,30);
+
+question5
+DELETE FROM customers WHERE customerid = 56;
+
+question6
+SELECT * FROM customers WHERE country= 'Brazil' or country = 'Italy';
+
+
+question7
+SELECT * FROM Customers
+WHERE CustomerName LIKE '%son%';
+
+question8
+SELECT * FROM orders WHERE orderdate >= '1996-10-01' and orderdate <= '1996-10-31' order by orderdate asc;
+
+question9
+SELECT count(orderid)
+FROM Orders;
+
+question10
+SELECT * FROM products WHERE price>25;

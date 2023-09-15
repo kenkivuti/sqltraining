@@ -1,0 +1,15 @@
+JOINS
+
+SELECT c.customername,o.orderid,o.orderdate,c.city,c.country,s.shippername
+FROM customers as c 
+JOIN orders as o on  c.customerid=o.customerid
+JOIN shippers as s on   o.shipperid = s.shipperid;
+
+display the customer who has bought the most product of all tym?w3schools
+
+SELECT customers.customername,sum(quantity) as total
+FROM customers
+JOIN orders on customers.customerid=orders.customerid
+JOIN orderdetails on orderdetails.orderid=orders.orderid
+JOIN products on products.productid= orderdetails.productid
+GROUP BY customers.customername order by total des

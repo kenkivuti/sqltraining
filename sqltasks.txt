@@ -1,0 +1,81 @@
+question2
+SELECT  orders.OrderId, orders.OrderDate, customers.CustomerName, customers.City, customers.Address,customers.PostalCode, shippers.ShipperName, products.ProductName, products.Quantity FROM orders
+join customers on customers.customerid=orders.customerid
+join shippers on shippers.shipperid=orders.shipperid
+join orderdetails on orderdetails.orderid=orders.orderid
+join products on products.productid=orderdetails.productid;
+
+question3
+SELECT products.ProductName , shippers.shippername
+FROM orders
+JOIN orderdetails on orders.orderid=orderdetails.orderid
+JOIN products on products.productid=orderdetails.productid
+JOIN shippers on shippers.shipperid=orders.shipperid;
+
+question4
+ SELECT count(orderdetails.quantity)products.productid,shippers.shippername
+FROM orders
+JOIN orderdetails on orderdetails.orderid=orders.orderid
+JOIN products on products.productid=orderdetails.productid
+JOIN shippers on shippers.shipperid=orders.shipperid
+GROUP BY shippername;
+
+question5
+SELECT * FROM Customers
+WHERE customername IS NOT '%son%';
+
+question6
+SELECT SUM(orderdetails.quantity*products.price)
+FROM orders
+JOIN orderdetails
+ON orderdetails.orderid=orders.orderid
+JOIN products
+ON products.productid=orderdetails.productid
+WHERE orders.orderdate like '1997-%'
+
+question7
+SELECT customers.customername , sum(orderdetails.quantity * products.price) as total  FROM customers
+JOIN orders on orders.customerid=customers.customerid
+JOIN orderdetails on orderdetails.orderid=orders.OrderID
+JOIN products on products.productid=orderdetails.productid
+GROUP BY customername order by total DESC;
+
+question8
+SELECT suppliers.suppliername,products.productname FROM suppliers
+JOIN products on products.supplierid=suppliers.supplierid
+order by suppliername DESC limit 1;
+
+
+question9
+SELECT products.productname , orderdetails.quantity, sum(orderdetails.quantity*products.price) as total FROM products
+JOIN orderdetails on orderdetails.productid=products.productid
+GROUP BY productname;
+
+
+question10
+SELECT substr(orderdate, 6, 2) as MonthOfOrder,sum(orderdetails.quantity*products.price) as sales
+FROM customers
+JOIN orders on customers.customerid=orders.customerid
+JOIN orderdetails on orderdetails.orderid=Orders.orderid
+JOIN products on products.productid=orderdetails.productid
+GROUP BY MonthOfOrder ORDER BY sales DESC limit 1;
+
+question11
+SELECT substr(orderdate, -2, 2) as DateOfOrder,sum(orderdetails.quantity*products.price) as sales
+FROM customers
+JOIN orders on customers.customerid=orders.customerid
+JOIN orderdetails on orderdetails.orderid=Orders.orderid
+JOIN products on products.productid=orderdetails.productid
+GROUP BY DateOfOrder ORDER BY Dateoforder ASC;
+
+question12
+SELECT customers.customername, sum(orderdetails.quantity*products.price)as sales FROM customers
+JOIN orders on customers.customerid=orders.customerid
+JOIN orderdetails on orderdetails.orderid=orders.orderid
+JOIN products on products.productid=orderdetails.productid
+GROUP BY customername;
+
+question13
+step1) CREATE TABLE payments(paymentid int,customerid int,orderid int,amount);
+step2) INSERT INTO payments(paymentid,customerid,orderid,amount)
+       VALUES (101,90,10248,'2000USD'),(102,81,10249,'5000USD'),(103,7,10265,'200USD'),(104,88,10256,'10000USD');
